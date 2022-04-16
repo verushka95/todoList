@@ -2,7 +2,7 @@
   <div class="main__todo todo">
     <h1 class="todo__title title">Todo list</h1>
     <div class="todo__form-group">
-      <input class="form-control input" type="text" v-model="nameTask" @keyup.enter="addTask($event)" placeholder="Введите название задачи"/>
+      <input class="todo__input form-control input" type="text" v-model="nameTask" @keyup.enter="addTask($event)" placeholder="Введите название задачи"/>
     </div>
     <div v-if="getTasksCount" class="todo__content">
       <h3 class="todo__subtitle">Что нужно сделать?</h3>
@@ -13,16 +13,16 @@
       </ul>
       <div class="todo__info info">
         <div class="info__count">
-          {{ countTask }} item 
+          Количество задач: {{ countTask }}  
         </div>
         <app-item-sort :myclass="'info__sort sort'" :data="filter" @clickFilter="doFilter($event)"/>
         <div class="info__clear" v-show="hasCompleted" @click="clearCompletedTasks()">
-          Clear Completed
+         Удалить завершенные
         </div>
       </div>
     </div>
     <div v-else class="todo__content" >
-      <div class="text-danger">
+      <div class="todo__text text-danger">
         Задач пока нет  
       </div>
     </div>
@@ -40,9 +40,9 @@ export default {
       nameTask: '',
       hasFilter: false,
       filter: [
-        { id: 0, keyValue: '', value: 'All', selected: true },
-        { id: 1, keyValue: 'active', value: 'Active', selected: false },
-        { id: 2, keyValue: 'completed', value: 'Completed', selected: false },
+        { id: 0, keyValue: '', value: 'Все', selected: true },
+        { id: 1, keyValue: 'active', value: 'Активные', selected: false },
+        { id: 2, keyValue: 'completed', value: 'Завершенные', selected: false },
       ]
     }
   },
